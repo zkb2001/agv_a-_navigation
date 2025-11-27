@@ -217,20 +217,12 @@ timestamp,name,X,Y,pitch,loaded,destination,Emergency,task-id
 - Comprehensive performance metrics
 - Machine learning integration for adaptive planning
 
-## Team
-
-This project was developed as part of CISC7201 Data Science Programming course.
 
 ## License
 
 This project is for educational purposes.
 
-## References
 
-- Hart, P. E., Nilsson, N. J., & Raphael, B. (1968). A formal basis for the heuristic determination of minimum cost paths.
-- Stern, R., et al. (2019). Multi-Agent Pathfinding: Definitions, Variants, and Benchmarks.
-
----
 
 For detailed analysis and visualizations, please refer to `project_report.ipynb`.
 
