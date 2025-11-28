@@ -4,6 +4,70 @@
 
 This project implements a comprehensive multi-agent path planning and task scheduling system for Automated Guided Vehicles (AGVs) in a warehouse environment. The system coordinates 12 AGVs to efficiently complete 102 tasks across a 21×21 grid warehouse, ensuring collision-free operations and optimal task allocation.
 
+## Competition Rules
+
+This project was developed for the **2025 Siemens Xcelerator Open Competition - MioVerse Track JCIIOT Developer Contest**. The following rules outline the problem requirements and constraints.
+
+### Problem Description
+
+A courier company needs to optimize task allocation and AGV (Automated Guided Vehicle) route planning for an automated sorting unit to achieve efficient transportation of packages from pickup stations to destination sorting outlets. AGVs must complete transportation tasks in the shortest time while avoiding collisions and satisfying all constraint conditions.
+
+#### Given Information
+
+1. **Pickup Stations**: 6 stations where packages arrive. AGVs pick up packages at designated pickup points. Station names: `["Tiger", "Dragon", "Horse", "Rabbit", "Ox", "Monkey"]`. Each station has one pickup point.
+
+2. **Sorting Outlets**: 16 outlets corresponding to destination flows. Each outlet has 4 adjacent unloading points.
+
+3. **AGV Fleet**: 12 AGVs, all available. Names: `["Optimus", "Bumblebee", ..., "Jazz"]`. AGVs transport packages from pickup station pickup points to outlet unloading points. After reaching the designated unloading point of the destination outlet, AGVs automatically unload packages into the outlet.
+
+4. **AGV Properties**:
+   - **Dimensions**: 40cm × 40cm × 30cm
+   - **Speed**: 1 m/s (acceleration/deceleration not considered)
+   - **Turning**: Only in-place rotation, turning angle must be multiples of 90 degrees, each turn takes 1 second
+   - **Loading/Unloading**: Each operation takes 1 second
+   - **Waiting**: AGVs can wait in place for collision avoidance, waiting time must be integer multiples of 1 second
+   - **Initial State**: Each AGV has initial coordinates [x, y] and orientation pitch (in degrees: 0° = +X axis, 90° = +Y axis, 180° = -X axis, 270° = -Y axis)
+
+5. **Map Layout**:
+   - The area map consists of a 20m × 20m region, each grid cell is 1m × 1m
+   - AGVs can only move along grid cell centers
+
+6. **Package Sequence**: Random sequence matching outlet flows, including pickup station number, destination outlet number, priority type (high-priority urgent or normal), and remaining valid time for high-priority packages.
+
+### Constraints
+
+1. Each AGV can only transport one package at a time
+2. AGVs can only pick up packages when available at the station, and each pickup station can only complete one AGV pickup per second
+3. AGVs pick up packages at the unique pickup point on the left/right side of the pickup station (e.g., Horse pickup point at (2,14); Monkey pickup point at (19,14)). AGVs can unload at any of the 4 unloading points adjacent to the destination outlet (unloading points are in the 4 adjacent grid cells, e.g., if destination Hangzhou is at (6,16), unloading points are at (6,15), (6,17), (5,16), (7,16)). AGVs cannot move beyond the 20m × 20m map boundaries
+4. Packages must be picked up in the order specified by each pickup station's package sequence
+5. High-priority packages must be transported to the destination within the specified remaining time (constraint satisfaction: +10 points bonus; violation: -5 points penalty)
+6. Packages must be unloaded at the designated unloading points of the destination outlet
+7. AGVs can only move along X and Y axes, one grid per second, no diagonal movement
+8. All blank areas except pickup stations and outlets are passable. Collisions occur when AGVs appear at the same position at the same time, or when AGVs swap positions while moving in opposite directions
+9. AGV in-place turning can only be ±90° or 180°, any angle turn takes 1 second to complete. Turning cannot occur at the same time as loading/unloading operations
+
+### Scoring Rules
+
+#### Preliminary Round: Automated Evaluation (Full Score: 120 points, including 20 bonus points)
+
+- **Basic Scoring**: Within 5 minutes, count all packages successfully delivered to correct destinations. Each package = 1 point. Tasks violating constraints receive no points
+- **High-Priority Task Bonus/Penalty**: High-priority packages unloaded at destination outlet within specified remaining time: +10 points per task. If high-priority task not completed within time limit: -5 points per task
+- **AGV Collision Penalty**: If AGVs collide: -10 points. Collided AGVs disappear and cannot be used further. Package tasks are lost and cannot continue
+- **Tie-Breaking**: In case of ties, compare the completion time of the last package task. Earlier completion wins. If still tied, additional random task inputs are used, considering evaluation score, task completion time, and program runtime
+
+#### Final Round: Expert Subjective Evaluation (Full Score: 100 points)
+
+Expert evaluation considers the following factors:
+
+| Evaluation Criteria | Key Points | Weight |
+| :--: | :--: | :--: |
+| AI/LLM Technology Application | - Depth and innovation of LLM integration in the system<br>- Reasonableness of AI technology application scenarios<br>- Effectiveness of AI solutions<br>- Explainability of intelligent decisions | 40% |
+| Algorithm Innovation | - Breakthrough improvements compared to traditional methods<br>- Originality of algorithm ideas<br>- Innovation level of technical approach | 30% |
+| Practicality and Scalability | - Adaptation to real scenarios<br>- System scalability difficulty<br>- Deployment and maintenance costs<br>- Computational overhead | 20% |
+| Code Quality | - Code standardization<br>- Maintainability | 10% |
+
+**Final Score = Automated Evaluation Score (60%) + Expert Evaluation Score (40%)**
+
 ## Features
 
 - **Multi-Agent Path Planning**: A* algorithm with temporal constraints for collision-free pathfinding
