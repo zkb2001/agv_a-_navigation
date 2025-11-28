@@ -19,11 +19,11 @@ final_version/
 ├── agv_position.csv          # Warehouse layout and initial AGV positions
 ├── agv_task.csv              # Task definitions (102 tasks)
 ├── agv_trajectory.csv         # Generated AGV trajectories (output)
-├── main right copy.py         # Main simulation algorithm
+├── naviagation.py             # Main simulation algorithm
 ├── display.py                 # Visualization module
 ├── project_report.ipynb       # Jupyter notebook with full analysis
 ├── README.md                  # This file
-└── agv_simulation.mp4         # Generated simulation video (optional)
+└── agv_simulation.mp4         # Generated simulation video (output)
 ```
 
 ## Requirements
@@ -53,7 +53,7 @@ pip install pandas numpy matplotlib seaborn pygame imageio
 Execute the main simulation to generate AGV trajectories:
 
 ```bash
-python "main right copy.py"
+python "navigation.py"
 ```
 
 This will:
