@@ -12,6 +12,15 @@ This project implements a comprehensive multi-agent path planning and task sched
 - **Real-time Visualization**: Interactive pygame-based visualization with video export capability
 - **Task Sequence Management**: Ensures tasks are picked up in correct order from each pickup point
 
+## Demo Video
+
+以下是系统运行时的演示视频：
+
+<video width="800" controls>
+  <source src="agv_simulation.mp4" type="video/mp4">
+  您的浏览器不支持视频标签。
+</video>
+
 ## Project Structure
 
 ```
