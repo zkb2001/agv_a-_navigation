@@ -16,10 +16,9 @@ This project implements a comprehensive multi-agent path planning and task sched
 
 以下是系统运行时的演示视频：
 
-<video width="800" controls>
-  <source src="https://raw.githubusercontent.com/zkb2001/agv_a-_navigation/master/agv_simulation.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。请点击 <a href="https://raw.githubusercontent.com/zkb2001/agv_a-_navigation/master/agv_simulation.mp4">这里</a> 下载视频。
-</video>
+[![AGV Simulation Demo](https://img.youtube.com/vi/l5caN4atO44/maxresdefault.jpg)](https://youtube.com/shorts/l5caN4atO44?feature=share)
+
+**点击上方图片观看完整演示视频** | [直接访问 YouTube](https://youtube.com/shorts/l5caN4atO44?feature=share)
 
 ## Project Structure
 
